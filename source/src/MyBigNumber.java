@@ -1,9 +1,9 @@
-import java.time.LocalDateTime; 
+﻿import java.time.LocalDateTime; 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
- * Tác giả: Nguyễn Quốc Cường.
+ * Tác giả: Nguyễn Quốc Cường
  * DesCription.
  * Class MyBigNumber là lớp chứa 2 thuộc tính là 2 chuỗi đại diện cho 2 số.
  * Hàm sum là hàm để thực hiện phép cộng 2 chuỗi số
@@ -30,21 +30,30 @@ class MyBigNumber implements IStrCalculator {
      * @return chuỗi số thể hiện giá trị tổng của s1 và s2
      */
     @Override
-    public String sum(final String s1,final String s2) {       
+    public String sum(final String s1, final String s2) {       
         
-        // kiểm tra tính hợp lệ của tham số s1
-        for (char c: s1.toCharArray()) {
-            if (c - '0' < 0 || c - '0' > 9) {
-                throw new NumberFormatException("Check Your Number Input");
+        // kiểm tra tính hợp lệ: return exception nếu có tham số rỗng
+        
+        try {
+            
+            // kiểm tra tính hợp lệ của tham số s1
+            for (char c: s1.toCharArray()) {
+                if (c - '0' < 0 || c - '0' > 9) {
+                    throw new NumberFormatException();
+                }
             }
+        
+            // kiểm tra tính hợp lệ của tham số s2
+            for (char c: s2.toCharArray()) {
+                if (c - '0' < 0 || c - '0' > 9) {
+                    throw new NumberFormatException();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Ban nhap so sai roi");
+            return "";
         }
         
-        // kiểm tra tính hợp lệ của tham số s2
-        for (char c: s2.toCharArray()) {
-            if (c - '0' < 0 || c - '0' > 9) {
-                throw new NumberFormatException("Check Your Number Input");
-            }
-        }
         
         // gán giá trị tham số vào 2 thuộc tính s1 s2
         setS1(s1.equals("") ? "0" : s1);
