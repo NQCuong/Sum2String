@@ -1,16 +1,36 @@
 package addnumber;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-public class MyBigNumber { 
+
+/**
+ * Tác giả:  NQCuong.
+ * DesCription.
+ * Class MyBigNumber là lớp để Cộng 2 số lớn bằng 2 chuỗi.
+ * Hàm sum là hàm để thực hiện phép cộng 2 chuỗi số.
+ */
+
+public class MyBigNumber {
+    
     private IReceiver ireceiver;
-    /**
-     *
-     * @param ireceiver
-     */
+
     public MyBigNumber(final IReceiver ireceiver) {
         this.ireceiver = ireceiver;
     }
-    public String sum(String s1, String s2) {
+
+    /** 
+     * Để thực hiện phép cộng 2 số, ta cần truyền 2 tham số là 2 chuỗi vào hàm sum.
+     * Trong đó : 2 chuỗi chỉ được chứa các kí tự số từ '0' đến '9'.
+     * <br/>
+     * 
+     * @param s1 chuỗi số thứ nhất.
+     * @param s2 chuỗi số thứ hai.
+     * @return 
+     */
+    public String sum(final String s1, final String s2) {
+        //Lấy độ dài của 2 chuỗi 
+        //Khai báo 
+
         String finalResult = "";
         String step = "";// Chuỗi step sẽ làm tham số cho hàm send của interface
         String conver = "";        
@@ -40,6 +60,7 @@ public class MyBigNumber {
         if ((s2 == null) || (s2.trim().isEmpty())) {
             s2 = "0";
         }
+        
         // Kiểm tra số âm
         if (s1.charAt(0) == '-') {
             errorPos = 1;
